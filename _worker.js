@@ -832,12 +832,12 @@ const generateRemark = (index, port) => {
             remark = `💦 BPB - IPv4_${index - 1} : ${port}`;
             break;
         case 4:
-        // case 5:
-        //     remark = `💦 BPB - IPv6_${index - 3} : ${port}`;
-        //     break;
-        // default:
-        //     remark = `💦 BPB - Clean IP_${index - 5} : ${port}`;
-        //     break;
+        case 5:
+            remark = `💦 BPB - IPv6_${index - 3} : ${port}`;
+            break;
+        default:
+            remark = `💦 BPB - Clean IP_${index - 5} : ${port}`;
+            break;
     }
 
     return remark;
@@ -1030,10 +1030,10 @@ const getFragmentConfigs = async (env, hostName, client) => {
     const resolved = await resolveDNS(hostName);
     const Addresses = [
         hostName,
-        "www.speedtest.net"//,
-//        ...resolved.ipv4,
-//        ...resolved.ipv6.map((ip) => `[${ip}]`),
-//        ...(cleanIPs ? cleanIPs.split(",") : [])
+        "www.speedtest.net",
+        ...resolved.ipv4,
+        ...resolved.ipv6.map((ip) => `[${ip}]`),
+        ...(cleanIPs ? cleanIPs.split(",") : [])
     ];
 
     if (outProxy) {
@@ -1207,10 +1207,10 @@ const getSingboxConfig = async (env, hostName) => {
     const resolved = await resolveDNS(hostName);
     const Addresses = [
         hostName,
-        "www.speedtest.net"//,
-        // ...resolved.ipv4,
-        // ...resolved.ipv6.map((ip) => `[${ip}]`),
-        // ...(cleanIPs ? cleanIPs.split(",") : [])
+        "www.speedtest.net",
+        ...resolved.ipv4,
+        ...resolved.ipv6.map((ip) => `[${ip}]`),
+        ...(cleanIPs ? cleanIPs.split(",") : [])
     ];
 
     ports.forEach(port => {
