@@ -13,8 +13,8 @@ let userID = '89b3cbba-e6ac-485a-9481-976a0415eab9';
 // https://www.nslookup.io/domains/cdn-all.xn--b6gac.eu.org/dns-records/
 const proxyIPs= ['cdn.xn--b6gac.eu.org', 'cdn-all.xn--b6gac.eu.org', 'edgetunnel.anycast.eu.org'];
 
-const defaultHttpPorts = ['80', '8080', '8880'];
-const defaultHttpsPorts = ["443", "8443", "58443", "59491", "63443"];
+const defaultHttpPorts = ['80', '8080', '2052', '2082', '2086', '2095', '8880'];
+const defaultHttpsPorts = ['443', '8443', '2053', '2083', '2087', '2096'];
 
 let proxyIP = proxyIPs[Math.floor(Math.random() * proxyIPs.length)];
 
@@ -825,18 +825,18 @@ const generateRemark = (index, port) => {
     switch (index) {
         case 0:
         case 1:
-            remark = `BPB2 - Domain_${index + 1} : ${port}`;
+            remark = `💦 BPB - Domain_${index + 1} : ${port}`;
             break;
-        // case 2:
-        // case 3:
-        //     remark = `BPB2 - IPv4_${index - 1} : ${port}`;
-        //     break;
-        // case 4:
+        case 2:
+        case 3:
+            remark = `💦 BPB - IPv4_${index - 1} : ${port}`;
+            break;
+        case 4:
         // case 5:
-        //     remark = `BPB2 - IPv6_${index - 3} : ${port}`;
+        //     remark = `💦 BPB - IPv6_${index - 3} : ${port}`;
         //     break;
         // default:
-        //     remark = `BPB2 - Clean IP_${index - 5} : ${port}`;
+        //     remark = `💦 BPB - Clean IP_${index - 5} : ${port}`;
         //     break;
     }
 
@@ -1030,10 +1030,10 @@ const getFragmentConfigs = async (env, hostName, client) => {
     const resolved = await resolveDNS(hostName);
     const Addresses = [
         hostName,
-        "www.speedtest.net",
-        ...resolved.ipv4,
-        ...resolved.ipv6.map((ip) => `[${ip}]`),
-        ...(cleanIPs ? cleanIPs.split(",") : [])
+        "www.speedtest.net"//,
+//        ...resolved.ipv4,
+//        ...resolved.ipv6.map((ip) => `[${ip}]`),
+//        ...(cleanIPs ? cleanIPs.split(",") : [])
     ];
 
     if (outProxy) {
