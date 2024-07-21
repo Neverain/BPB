@@ -1207,10 +1207,10 @@ const getSingboxConfig = async (env, hostName) => {
     const resolved = await resolveDNS(hostName);
     const Addresses = [
         hostName,
-        "www.speedtest.net",
-        ...resolved.ipv4,
-        ...resolved.ipv6.map((ip) => `[${ip}]`),
-        ...(cleanIPs ? cleanIPs.split(",") : [])
+        "www.speedtest.net"//,
+        // ...resolved.ipv4,
+        // ...resolved.ipv6.map((ip) => `[${ip}]`),
+        // ...(cleanIPs ? cleanIPs.split(",") : [])
     ];
 
     ports.forEach(port => {
